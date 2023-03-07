@@ -281,7 +281,7 @@ and tells why the data is not being displayed. It's a very helpful and powerful 
     -**AdMob** \
     -**Firebase Authentication for 'Email and Password' & 'Google Authentication'** \
     -**Firebase Realtime Database** \
-    -**Firebase Analytics** && **Remote Config**
+    -**Firebase Analytics** & **Remote Config**
 >- [Tibia Data API](https://tibiadata.com)
 ---
 
