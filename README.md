@@ -49,12 +49,13 @@ soon be available on [Google Play](https://play.google.com/store/games?hl=pt_BR&
 ### Remote Config
 ![](https://media.discordapp.net/attachments/655489748885831713/1082449294176550983/remote_config.gif?width=900&height=900)
 >- *First of all, sorry for the bad gif*
->- All the menus from the *Drawer Navigation* are controlled by the [Google Firebase](https://firebase.google.com) Remote Config, besides the **News Fragment** and **Settings Fragment**.
+>- All the menus from the *Drawer Navigation* are controlled by the [Google Firebase Remote Config](https://firebase.google.com/docs/remote-config?hl=pt-br), besides the **News Fragment** and **Settings Fragment**.
 I opted to wrap the view of those menus to access fragment in order to control any problems that may happen with the app during the time that it's available. It creates a space
 to disable features in order to fix and release new versions with the bug fixes and/or improvements. 
 >- Most of the fragments contains [Google AdMob](https://admob.google.com/home/) banners in the bottom of the fragment, and the visibility is also controlled by [Google Firebase](https://firebase.google.com) Remote Config
 in order to prioritize the *Ads* in the most used fragments. The application also use [Google Firebase Analytics](https://firebase.google.com/docs/analytics?hl=pt-br), a
 tool that allows me to access the data in order to know which feature is being more used
+>- The [Google Firebase Remote Config](https://firebase.google.com/docs/remote-config?hl=pt-br) allows the developer to send notifications at any time by enabling the boolean key for notifications and a string key, which if is different from empty, sends a notification, creating a very powerful tool
 
 ***
 ### Authentication
@@ -63,6 +64,15 @@ tool that allows me to access the data in order to know which feature is being m
 >- Google Authentication
 >- Email & Password Authentication
 >- Lost Password Recovery
+
+***
+### Settings
+![](https://media.discordapp.net/attachments/655489748885831713/1082471679374131340/settings.gif?width=400&height=900)
+>- Allows the user to enable and disable the **Dark Mode** and the change persists if the app is restarted
+>- Check the number of *Characters* and *Creatures* saved in the **Watch List** and the **Bestiary Tracker** respectively
+>- Register and unregister the main *Character* of the user in order to be able to interact with the **Community Fragment**, **Find Party Fragment** and **Market Fragment**
+>- The registration of a *Character* depends on paramethers that are checked by the [Tibia Data API](https://tibiadata.com) in order to specify which member is using the functions above and, if not used correctly, can be applied restrictions
+>- Logout of the app, which causes the inability to use the device, since it's needed to be registered in order to use all the functions provided by the app
 
 ***
 ## Fragments ([Tibia Data API](https://tibiadata.com))
@@ -109,7 +119,7 @@ tool that allows me to access the data in order to know which feature is being m
 >- App functionalities that starts from the **Guilds Fragment**
 >- **Guilds Fragment** displays all the *Guilds* related to a specific server (known as **world** in the game)
 >- *World* list received thought the API
->- **Guilds Fragment** -> **Guild Details Fragment** -> **Characters Fragment**
+>- **Guilds Fragment** -> **Guild Details Fragment** -> **Character Details Fragment**
 >- **Guild Details Fragment** displays the specific data for a *Guild*, with information such as the members
 >- Easily check the content of any *Characters* of the guild with a simple click
 >- **Search** thought the *Guild* list by name, using **Text Watcher** to respond to each new insert or deletion of characters
@@ -120,7 +130,7 @@ tool that allows me to access the data in order to know which feature is being m
 >- App functionalities that starts from the **Houses Fragment**
 >- **Houses Fragment** displays all the *Houses* and *Guild Halls* related to a specific server and also a in-game city
 >- *World* list received thought the API
->- **Houses Fragment** -> **House Details Fragment** -> **Characters Fragment**
+>- **Houses Fragment** -> **House Details Fragment** -> **Character Details Fragment**
 >- **House Details Fragment** displays the specific data for a *House* or a *Guild Hall*, which information such as: \
     - If it have a owner, who is it \
     - If it's under auction \
@@ -142,7 +152,7 @@ tool that allows me to access the data in order to know which feature is being m
 >- App functionalities that starts from the **Highscores Fragment**
 >- **Highscores Fragment** displays all the **Highscores** related to a specific server and other paramethers
 >- *World* list received thought the API
->- **Highscores Fragment** -> **Characters Fragment**
+>- **Highscores Fragment** -> **Character Details Fragment**
 >- Easily check the *Character* content of the high ranked players
 
 ***
@@ -158,6 +168,51 @@ tool that allows me to access the data in order to know which feature is being m
 ![](https://media.discordapp.net/attachments/655489748885831713/1082443643740246157/fansites.gif?width=400&height=900)
 >- App functionalities that starts from the **Fansites Fragment**
 >- **Fansites Fragment** travels to all the official *Fansites* and *Supporters* websites of the game, but also the *Supporters* of the app
+
+***
+
+## Fragments ([Firebase Realtime Database](https://firebase.google.com/docs/database?hl=pt-br))
+
+### Find Party
+![](https://media.discordapp.net/attachments/655489748885831713/1082465883223498822/find_party.gif?width=400&height=900)
+>- App functionalities that starts from the **Find Party Fragment**
+>- **Find Party Fragment** allows the user to search *Find Party* requests for specific servers
+>- **Find Party Fragment** -> **My Find Party Fragment**
+>- **My Find Party Fragment** controls the user posts in order to be able to delete whenever they want
+>- Interaction in-game only
+
+***
+### Market
+![](https://media.discordapp.net/attachments/655489748885831713/1082467085558501416/market.gif?width=400&height=900)
+>- App functionalities that starts from the **Market Fragment**
+>- **Market Fragment** allows the user to search *Market* announcements for specific servers
+>- **Market Fragment** -> **My Market Fragment**
+>- **My Market Fragment** controls the user announcements in order to be able to delete whenever they want
+>- Interaction in-game only
+
+***
+### Community
+![](https://media.discordapp.net/attachments/655489748885831713/1082467712879575081/community.gif?width=400&height=900)
+>- App functionalities that starts from the **Community Fragment**
+>- **Community Fragment** allows the user to search *Community* posts for all the game
+>- **Community Fragment** -> **My Community Fragment**
+>- **My Community Fragment** controls the user posts in order to be able to delete whenever they want
+>- **Community Fragment** -> **Community Interaction Fragment**
+>- **Community Interaction Fragment** allows the users to communicate between them in a forum example, where there is a main post and comments for the users
+>- Interaction in-app only
+
+***
+
+## Fragments ([ROOM](https://developer.android.com/jetpack/androidx/releases/room?hl=pt-br))
+
+### Watch List & Bestiary Tracker
+![](https://media.discordapp.net/attachments/655489748885831713/1082469928231252068/watch_list_and_bestiary_tracker.gif?width=400&height=900)
+>- Both **Bestiary Tracker Fragment** and **Watch List Fragment** uses [ROOM](https://developer.android.com/jetpack/androidx/releases/room?hl=pt-br)
+to store *Creatures* and *Characters*
+>- They allow the user to swipe the items and delete them, but also recover if needed
+>- They navigate to their specific locations
+>- **Watch List Fragment** -> **Character Details Fragment**
+>- **Bestiary Tracker Fragment** -> **Creature Details Fragment**
 
 ---
 
